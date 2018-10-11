@@ -1,0 +1,60 @@
+﻿@model AssetMgmt.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Designation.DesignationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation.DesignationName)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+
+        <br />
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetManagements)
+        </dt>
+        <br />
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Asset Name</th>
+                    <th>Model Number</th>
+                </tr>
+                @foreach (var item in Model.AssetManagements)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Asset.AssetName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.modelNumber)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
